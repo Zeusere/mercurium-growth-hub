@@ -2,8 +2,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, TrendingUp, Users, DollarSign } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Projects = () => {
+  const { t } = useLanguage();
   const projects = [
     {
       title: "Coming Soon",
@@ -45,11 +47,10 @@ const Projects = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Our Success Stories
+            {t('projects.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Real apps, real results. See how our proven methodology transforms ideas into 
-            profitable, scalable businesses that dominate their markets.
+            {t('projects.subtitle')}
           </p>
         </div>
         

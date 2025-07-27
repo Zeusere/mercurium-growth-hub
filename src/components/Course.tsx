@@ -5,11 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Zap, Rocket, Target, Clock, Trophy } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Course = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,8 +22,8 @@ const Course = () => {
     // Simulate API call
     setTimeout(() => {
       toast({
-        title: "🎉 You're on the waitlist!",
-        description: "We'll notify you when the Vibe Coding course launches. Get ready to build your next million-dollar app!",
+        title: "🎉 ¡Estás en la lista de espera!",
+        description: t('course.email.success'),
       });
       setEmail("");
       setIsSubmitting(false);
@@ -31,23 +33,23 @@ const Course = () => {
   const features = [
     {
       icon: <Zap className="w-5 h-5" />,
-      title: "Vibe Coding Method",
-      description: "Learn our proprietary rapid development framework that cuts build time by 80%"
+      title: t('course.feature1.title'),
+      description: t('course.feature1.description')
     },
     {
       icon: <Rocket className="w-5 h-5" />,
-      title: "Launch in Days, Not Months",
-      description: "From idea to profitable app in under 30 days using our proven systems"
+      title: t('course.feature2.title'),
+      description: t('course.feature2.description')
     },
     {
       icon: <Target className="w-5 h-5" />,
-      title: "Growth Hacking Secrets",
-      description: "The exact strategies we use to achieve 10x user growth and viral adoption"
+      title: t('course.feature3.title'),
+      description: t('course.feature3.description')
     },
     {
       icon: <Trophy className="w-5 h-5" />,
-      title: "Monetization Blueprints",
-      description: "Multiple revenue streams and pricing strategies that maximize profit from day one"
+      title: t('course.feature4.title'),
+      description: t('course.feature4.description')
     }
   ];
 
@@ -60,31 +62,32 @@ const Course = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-            🔥 Limited Access - Early Bird
+            🔥 Acceso Limitado - Oferta de Lanzamiento
           </Badge>
           
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Master
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Vibe Coding</span>
+            {t('course.title')}
+            <span className="bg-gradient-primary bg-clip-text text-transparent block">
+              {t('course.subtitle')}
+            </span>
           </h2>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            The revolutionary course that teaches you to build, launch, and scale 
-            profitable apps faster than ever imagined. Join the exclusive waitlist.
+            {t('course.description')}
           </p>
           
           <div className="flex items-center justify-center gap-6 mb-12">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Clock className="w-4 h-4" />
-              <span>30-day challenge</span>
+              <span>{t('course.benefit1')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Target className="w-4 h-4" />
-              <span>Real projects</span>
+              <span>{t('course.benefit2')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Trophy className="w-4 h-4" />
-              <span>Profit guarantee</span>
+              <span>{t('course.benefit3')}</span>
             </div>
           </div>
         </div>
@@ -113,10 +116,10 @@ const Course = () => {
         {/* Waitlist Form */}
         <Card className="max-w-2xl mx-auto bg-background/80 backdrop-blur-sm border-border/50 shadow-primary/10">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl mb-2">Join the Exclusive Waitlist</CardTitle>
+            <CardTitle className="text-2xl mb-2">{t('course.waitlist')}</CardTitle>
             <CardDescription className="text-base">
-              Be among the first 100 students to access the Vibe Coding course at a special launch price.
-              <strong className="block text-foreground mt-2">Only 100 spots available!</strong>
+              Sé uno de los primeros 100 estudiantes en acceder al curso Vibe Coding a precio especial de lanzamiento.
+              <strong className="block text-foreground mt-2">¡Solo 100 plazas disponibles!</strong>
             </CardDescription>
           </CardHeader>
           
@@ -125,7 +128,7 @@ const Course = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Input
                   type="email"
-                  placeholder="Enter your email address"
+                  placeholder={t('course.email.placeholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="flex-1"
@@ -137,29 +140,29 @@ const Course = () => {
                   className="shadow-primary whitespace-nowrap"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Joining..." : "Secure My Spot"}
+                  {isSubmitting ? "Uniéndome..." : "Asegurar Mi Plaza"}
                 </Button>
               </div>
               
               <div className="flex items-center gap-2 text-sm text-muted-foreground justify-center">
                 <CheckCircle className="w-4 h-4 text-primary" />
-                <span>No spam, ever. Unsubscribe anytime.</span>
+                <span>Sin spam, nunca. Cancela cuando quieras.</span>
               </div>
             </form>
             
             <div className="mt-8 pt-8 border-t border-border/50">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-primary">67</div>
-                  <div className="text-xs text-muted-foreground">Spots Left</div>
+                  <div className="text-2xl font-bold text-primary">{t('course.spots')}</div>
+                  <div className="text-xs text-muted-foreground">Plazas Restantes</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary">$497</div>
-                  <div className="text-xs text-muted-foreground">Early Bird Price</div>
+                  <div className="text-2xl font-bold text-primary">{t('course.price')}</div>
+                  <div className="text-xs text-muted-foreground">Precio Lanzamiento</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-primary">30</div>
-                  <div className="text-xs text-muted-foreground">Day Challenge</div>
+                  <div className="text-xs text-muted-foreground">Días Desafío</div>
                 </div>
               </div>
             </div>

@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
@@ -18,25 +21,23 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-background/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2 mb-8">
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Building the future of rapid app development</span>
+            <span className="text-sm font-medium">🔥 Aprende Vibe Coding - Metodología Revolucionaria</span>
           </div>
           
           {/* Main headline */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Build Apps That
+            {t('hero.title')}
             <span className="bg-gradient-primary bg-clip-text text-transparent block">
-              Scale & Profit
+              {t('hero.subtitle')}
             </span>
             <span className="text-muted-foreground text-3xl md:text-5xl font-normal">
-              in Record Time
+              Con Nuestro Curso
             </span>
           </h1>
           
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            We don't just build apps—we engineer <strong className="text-foreground">growth machines</strong>. 
-            Discover the proven systems behind apps that achieve explosive growth, seamless scaling, 
-            and consistent revenue generation.
+            {t('hero.description')}
           </p>
           
           {/* Stats */}
@@ -59,12 +60,12 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="shadow-primary group" asChild>
               <a href="#course">
-                Join the Waitlist
+                {t('hero.cta')}
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#projects">View Our Projects</a>
+              <a href="#projects">{t('hero.watch')}</a>
             </Button>
           </div>
         </div>
