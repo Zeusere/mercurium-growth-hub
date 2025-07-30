@@ -15,7 +15,6 @@ const Header = () => {
               src={mercuriumLogo} 
               alt="Mercurium Logo" 
               className="w-10 h-10 object-contain"
-              style={{ filter: 'brightness(0) invert(1)' }}
             />
             <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Mercurium.ai
