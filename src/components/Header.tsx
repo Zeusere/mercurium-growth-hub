@@ -33,6 +33,14 @@ const Header = () => {
               {t('nav.contact')}
             </Button>
           </nav>
+          
+          {/* Mobile Navigation */}
+          <div className="flex md:hidden items-center space-x-2">
+            <LanguageSwitcher />
+            <Button variant="outline" size="sm">
+              {t('nav.contact')}
+            </Button>
+          </div>
         </div>
       </div>
     </header>
