@@ -14,7 +14,8 @@ const Header = () => {
             <img 
               src={mercuriumLogo} 
               alt="Mercurium Logo" 
-              className="w-10 h-10"
+              className="w-10 h-10 object-contain"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
             <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Mercurium.ai
@@ -35,11 +36,8 @@ const Header = () => {
           </nav>
           
           {/* Mobile Navigation */}
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex md:hidden items-center">
             <LanguageSwitcher />
-            <Button variant="outline" size="sm">
-              {t('nav.contact')}
-            </Button>
           </div>
         </div>
       </div>
